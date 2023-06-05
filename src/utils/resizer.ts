@@ -1,30 +1,24 @@
 import express from 'express';
 import sharp from 'sharp';
 import fs from 'fs';
-import {promises as fsPromises} from 'fs';
 
-export const resizer = (
+export const resizer = async (
     req: express.Request,
     res: express.Response,
     next: Function
-): void => {
+): Promise<void> => {
     const Img = {
         filename: req.query.filename as string,
         width: req.query.width as string,
         height: req.query.height as string,
     };
-    const pathIn = `./assets/full/${Img.filename}.jpg`;
-    const pathOut = `./assets/thumb/${Img.filename}_${Img.width}_${Img.height}.jpg`;
-    console.log('PATHIN' + pathIn);
-    console.log('PATHOUT' + pathOut);
+    const pathIn = `./src/assets/full/${Img.filename}.jpg`;
+    const pathOut = `./src/assets/thumb/${Img.filename}_${Img.width}_${Img.height}.jpg`;
 
     if (!fs.existsSync(pathOut)) {
-
-        sharp(pathIn)
-                .resize(parseInt(Img.width), parseInt(Img.height))
-                .toFile(pathOut, (err)=> {console.log(err)})
-                
+        await sharp(pathIn)
+            .resize(parseInt(Img.width), parseInt(Img.height))
+            .toFile(pathOut)  
     }
-
     next();
 };
