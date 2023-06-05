@@ -20,5 +20,6 @@ export const resizer = async (
             .resize(parseInt(Img.width), parseInt(Img.height))
             .toFile(pathOut)  
     }
+    
     next();
 };
