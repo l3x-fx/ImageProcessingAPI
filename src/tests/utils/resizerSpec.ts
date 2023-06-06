@@ -5,7 +5,7 @@ import { Request } from 'express';
 import { Response } from 'express';
 
 describe('Resizer middleware', () => {
-    const imgPath: string = './src/assets/thumb/dunes_200_200.jpg';
+    const imgPath = './src/assets/thumb/dunes_200_200.jpg';
 
     afterEach(async () => {
         try {
