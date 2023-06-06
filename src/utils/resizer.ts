@@ -14,10 +14,10 @@ export const resizer = async (
     };
     const pathIn = `./src/assets/full/${Img.filename}.jpg`;
     const pathOut = `./src/assets/thumb/${Img.filename}_${Img.width}_${Img.height}.jpg`;
-    
-    if(!/^[0-9]+$/.test(Img.width) || !/^[0-9]+$/.test(Img.height)) {
-        res.send('Please provide numbers as height and width!')
-        next()
+
+    if (!/^[0-9]+$/.test(Img.width) || !/^[0-9]+$/.test(Img.height)) {
+        res.send('Please provide height and width as numbers!');
+        next();
     } else {
         if (!fs.existsSync(pathOut)) {
             await sharp(pathIn)
@@ -26,6 +26,6 @@ export const resizer = async (
                 .catch((err) => next(err));
         }
     }
-    
+
     next();
 };
