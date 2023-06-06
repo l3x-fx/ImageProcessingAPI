@@ -14,6 +14,12 @@ After starting the server you can test this endpoint with the following pictures
 To resize an image simply use the format as shown in the following example: 
 http://localhost:3000/api/image?filename=anemones&width=400&height=333
 
+## Scripts
+To start the server in dev-mode type **npm run start**
+To run the build script simpley type **npm run build** and run the server with **node dist/.**
+To run the tests type **npm run test** 
+
+
 ## TechStack & more
 - **NodeJS** and **Express** for the server setup
 - **Typescript** for the all the code
