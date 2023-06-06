@@ -10,9 +10,8 @@ app.get(
     resizer,
     (req: express.Request, res: express.Response): void => {
         const pathOut: string = `./assets/thumb/${req.query.filename}_${req.query.width}_${req.query.height}.jpg`;
-        if (fs.existsSync(pathOut)) {
-            res.sendFile(pathOut, { root: './src' });
-        } 
+        res.sendFile(pathOut, { root: './src' });
+
     }
 );
 

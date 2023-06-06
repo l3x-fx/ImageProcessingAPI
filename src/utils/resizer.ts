@@ -18,6 +18,9 @@ export const resizer = async (
     if (!/^[0-9]+$/.test(Img.width) || !/^[0-9]+$/.test(Img.height)) {
         res.send('Please provide height and width as numbers!');
         next();
+    } else if (!fs.existsSync(pathIn)) {
+        res.send('Please provide an existing filename!');
+        next();
     } else {
         if (!fs.existsSync(pathOut)) {
             await sharp(pathIn)
